@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daniella - Artist Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        /* Fallback styling for broken images */
+        img {
+            background: linear-gradient(135deg, #e5e7eb 0%, #d1d5db 100%);
+        }
+        
+        /* Enhanced Animated gradient background */
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .animated-gradient {
+            background: linear-gradient(-45deg, #f3f4f6, #e5e7eb, #d1d5db, #f9fafb, #e2e8f0);
+            background-size: 400% 400%;
+            animation: gradientShift 20s ease infinite;
+        }
+
+        /* Enhanced Floating particles with multiple sizes */
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.03);
+            pointer-events: none;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0.3; }
+            25% { transform: translateY(-20px) translateX(10px) rotate(90deg); opacity: 0.6; }
+            50% { transform: translateY(-40px) translateX(-10px) rotate(180deg); opacity: 0.4; }
+            75% { transform: translateY(-20px) translateX(20px) rotate(270deg); opacity: 0.7; }
+        }
+        
+        /* Mouse trail particles */
+        .mouse-trail {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1000;
+            background: radial-gradient(circle, rgba(59,130,246,0.6) 0%, transparent 70%);
+            transition: all 0.3s ease-out;
+        }
+        
+        /* Enhanced Fade in on scroll with stagger */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px) scale(0.95);
+            transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Staggered animation delay */
+        .fade-in:nth-child(1) { transition-delay: 0.1s; }
+        .fade-in:nth-child(2) { transition-delay: 0.2s; }
+        .fade-in:nth-child(3) { transition-delay: 0.3s; }
+        .fade-in:nth-child(4) { transition-delay: 0.4s; }
+        .fade-in:nth-child(5) { transition-delay: 0.5s; }
+        .fade-in:nth-child(6) { transition-delay: 0.6s; }
+
+        /* Pencil stroke animation - enhanced */
+        @keyframes drawLine {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        .line-animation {
+            position: relative;
+        }
+        
+        .line-animation::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(to right, #3b82f6, #1d4ed8, transparent);
+            animation: drawLine 2.5s ease-out forwards;
+            box-shadow: 0 2px 10px rgba(59,130,246,0.4);
+        }
+
+        /* Enhanced Gallery hover effects */
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.7s ease;
+        }
+        
+        .gallery-item:hover::before {
+            left: 100%;
+        }
+        
+        .gallery-item img {
+            filter: grayscale(20%) brightness(1.05);
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .gallery-item:hover img {
+            filter: grayscale(0%) brightness(1.15);
+            transform: scale(1.1) rotate(2deg);
+        }
+        
+        /* Floating navigation elements */
+        .nav-float {
+            animation: subtleFloat 6s ease-in-out infinite;
+        }
+        
+        @keyframes subtleFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+        }
+        
+        /* Button pulse and glow */
+        .btn-glow {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-glow::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s;
+        }
+        
+        .btn-glow:hover::before {
+            left: 100%;
+        }
+        
+        .btn-glow:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transform: translateY(-2px) scale(1.05);
+        }
+
+        /* Typing effect for hero text */
+        .typing-text {
+            border-right: 3px solid #3b82f6;
+            white-space: nowrap;
+            overflow: hidden;
+            animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: #3b82f6; }
+        }
+
+        /* Parallax effect for hero */
+        .parallax-hero {
+            background-attachment: fixed;
+            background-size: cover;
+        }
+        
+        /* Enhanced about section blobs */
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(40px);
+            opacity: 0.3;
+            animation: blobMove 20s infinite ease-in-out;
+        }
+        
+        @keyframes blobMove {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+    </style>
+</head>
+<body class="bg-neutral-50">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-md shadow-xl z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="text-3xl font-light tracking-widest nav-float">DANIELLA</div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-10">
+                    <a href="#home" class="text-gray-700 hover:text-blue-600 transition-all duration-300 nav-float">Home</a>
+                    <a href="#gallery" class="text-gray-700 hover:text-blue-600 transition-all duration-300 nav-float">Gallery</a>
+                    <a href="#about" class="text-gray-700 hover:text-blue-600 transition-all duration-300 nav-float">About</a>
+                    <a href="#contact" class="text-gray-700 hover:text-blue-600 transition-all duration-300 nav-float">Contact</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="menuBtn" class="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-all">
+                    <svg id="menuIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                    <svg id="closeIcon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="hidden md:hidden pb-4 pt-4 border-t bg-white/80 backdrop-blur-sm">
+                <a href="#home" class="block py-3 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-all mx-2">Home</a>
+                <a href="#gallery" class="block py-3 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-all mx-2">Gallery</a>
+                <a href="#about" class="block py-3 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-all mx-2">About</a>
+                <a href="#contact" class="block py-3 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-all mx-2">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section - Enhanced -->
+    <section id="home" class="pt-16 min-h-screen flex items-center justify-center animated-gradient relative overflow-hidden">
+        <!-- Enhanced Floating particles -->
+        <div class="particle" style="width: 120px; height: 120px; top: 10%; left: 5%; animation: float 7s ease-in-out infinite;"></div>
+        <div class="particle" style="width: 80px; height: 80px; top: 20%; left: 85%; animation: float 9s ease-in-out infinite 1s;"></div>
+        <div class="particle" style="width: 60px; height: 60px; top: 70%; left: 80%; animation: float 6s ease-in-out infinite 2s;"></div>
+        <div class="particle" style="width: 100px; height: 100px; top: 60%; left: 10%; animation: float 8s ease-in-out infinite 3s;"></div>
+        <div class="particle" style="width: 40px; height: 40px; top: 30%; left: 70%; animation: float 5s ease-in-out infinite 4s;"></div>
+        <div class="particle" style="width: 140px; height: 140px; top: 80%; left: 20%; animation: float 10s ease-in-out infinite 0.5s;"></div>
+        
+        <div class="text-center px-4 relative z-10">
+            <h1 class="text-5xl md:text-8xl font-light mb-6 tracking-widest line-animation typing-text">DANIELLA</h1>
+            <p class="text-xl md:text-3xl text-gray-600 mb-10 fade-in">Pencil Artist | Portraits | Character Design</p>
+            <a href="#gallery" class="inline-block bg-gradient-to-r from-black to-gray-800 text-white px-10 py-4 rounded-full text-lg font-medium btn-glow shadow-2xl">
+                View My Work →
+            </a>
+        </div>
+    </section>
+
+    <!-- Gallery Section - Enhanced -->
+    <section id="gallery" class="py-24 px-4 max-w-7xl mx-auto">
+        <h2 class="text-5xl font-light text-center mb-20 fade-in line-animation">Gallery</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Image 1 -->
+            <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl">
+                <img 
+                    src="https://i.imgur.com/HHZ7RgU.jpeg" 
+                    alt="Portrait sketch - Side profile with flowing hair"
+                    class="w-full h-full object-cover"
+                >
+            </div>
+
+            <!-- Image 2 -->
+            <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl">
+                <img 
+                    src="https://i.imgur.com/IuTOB2M.jpeg" 
+                    alt="Character portrait with beard"
+                    class="w-full h-full object-cover"
+                >
+            </div>
+
+            <!-- Add more images similarly with class="gallery-item" -->
+            <!-- Image 3-6 placeholders with enhanced error handling -->
+            <div class="gallery-item aspect-square bg-gradient-to-br from-blue-50 to-indigo-100 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl">
+                <img 
+                    src="image3.jpg" 
+                    alt="Character design 1"
+                    class="w-full h-full object-cover"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                >
+                <div class="w-full h-full hidden flex-col items-center justify-center bg-gradient-to-br from-blue-100 to-indigo-200 text-blue-800 p-8">
+                    <svg class="w-16 h-16 mb-4 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332-.477-4.5-1.253"/>
+                    </svg>
+                    <p class="text-center font-medium">Image loading...<br>Add your artwork here!</p>
+                </div>
+            </div>
+
+            <!-- Repeat pattern for images 4-6 -->
+        </div>
+    </section>
+
+    <!-- About Section - Enhanced -->
+    <section id="about" class="py-24 px-4 bg-white/50 backdrop-blur-sm relative overflow-hidden">
+        <!-- Animated background blobs -->
+        <div class="blob w-96 h-96 bg-gradient-to-r from-blue-200 to-purple-200 top-20 right-20"></div>
+        <div class="blob w-80 h-80 bg-gradient-to-r from-indigo-200 to-pink-200 bottom-20 left-20" style="animation-delay: -10s;"></div>
+        
+        <div class="max-w-6xl mx-auto relative z-10">
+            <h2 class="text-5xl font-light text-center mb-20 fade-in line-animation">About</h2>
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <!-- Artist photo with enhanced hover -->
+                <div class="aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden fade-in transform group hover:scale-110 transition-all duration-700 cursor-pointer shadow-2xl">
+                    <img 
+                        src="https://i.imgur.com/qVbwWS6.png" 
+                        alt="Daniella - Artist Photo"
+                        class="w-full h-full object-cover group-hover:scale-110 group-hover:grayscale-0 transition-all duration-700"
+                    >
+                </div>
+                
+                <div class="fade-in space-y-6">
+                    <h3 class="text-3xl font-light mb-6 line-animation">Artist Statement</h3>
+                    <p class="text-gray-700 leading-relaxed text-lg">I bring characters and personalities to life through the timeless medium of pencil. My work explores the depth of human expression through portraits and character design, capturing the subtle nuances that make each subject unique.</p>
+                    <p class="text-gray-700 leading-relaxed text-lg">Working primarily in pencil allows me to focus on the fundamentals: light, shadow, form, and emotion. I believe that even in black and white, art can convey the full spectrum of human experience.</p>
+                    <p class="text-gray-700 leading-relaxed text-lg">Through my art, I strive to connect with viewers on an emotional level, inviting them to see the world through the eyes of the subjects I create.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section - Enhanced -->
+    <section id="contact" class="py-24 px-4 bg-gradient-to-b from-neutral-50 to-gray-100">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-5xl font-light mb-8 fade-in line-animation">Get In Touch</h2>
+            <p class="text-xl text-gray-600 mb-12 fade-in">Interested in commissioning a piece or collaborating? I'd love to hear from you.</p>
+            
+            <div class="flex flex-wrap justify-center gap-8 mb-12">
+                <a href="mailto:muyakintayo@icloud.com" class="flex items-center gap-3 text-gray-700 hover:text-blue-600 transition-all duration-300 transform hover:scale-110 btn-glow p-4 rounded-xl bg-white/50 backdrop-blur-sm shadow-lg">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                    </svg>
+                    <span class="font-medium">muyakintayo@icloud.com</span>
+                </a>
+                <!-- Add Instagram/Twitter when available -->
+            </div>
+
+            <a href="mailto:muyakintayo@icloud.com" class="inline-block bg-gradient-to-r from-black via-gray-800 to-gray-900 text-white px-12 py-5 rounded-2xl text-xl font-medium btn-glow shadow-2xl">
+                Contact Me →
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-gray-900 to-black text-white py-12 text-center">
+        <p class="text-lg opacity-90">© 2026 Daniella. All rights reserved. Crafted with ❤️ and pencil.</p>
+    </footer>
+
+    <!-- Enhanced Scripts -->
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuIcon = document.getElementById('menuIcon');
+        const closeIcon = document.getElementById('closeIcon');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            menuIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on link click
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+            });
+        });
+        
+        // Enhanced scroll animations
+        const fadeElements = document.querySelectorAll('.fade-in');
+        const appearOnScroll = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        fadeElements.forEach(element => {
+            appearOnScroll.observe(element);
+        });
+
+        // Mouse trail effect
+        const trail = document.createElement('div');
+        trail.className = 'mouse-trail';
+        document.body.appendChild(trail);
+
+        let mouseX = 0, mouseY = 0;
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            trail.style.left = mouseX + 'px';
+            trail.style.top = mouseY + 'px';
+            trail.style.width = Math.random() * 20 + 10 + 'px';
+            trail.style.height = trail.style.width;
+            trail.style.opacity = Math.random() * 0.5 + 0.2;
+        });
+
+        // Parallax effect for hero on scroll
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('#home');
+            if (parallax) {
+                parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(255,255,255,0.98)';
+                nav.style.backdropFilter = 'blur(20px)';
+                nav.style.boxShadow = '0 10px 40px rgba(0,0,0,0.1)';
+            } else {
+                nav.style.background = 'rgba(255,255,255,0.95)';
+                nav.style.backdropFilter = 'blur(10px)';
+                nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.05)';
+            }
+        });
+    </script>
+</body>
+</html>
