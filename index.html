@@ -9,12 +9,10 @@
         html {
             scroll-behavior: smooth;
         }
-        /* Fallback styling for broken images */
         img {
             background: linear-gradient(135deg, #e5e7eb 0%, #d1d5db 100%);
         }
         
-        /* Enhanced Animated gradient background */
         @keyframes gradientShift {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
@@ -27,7 +25,6 @@
             animation: gradientShift 20s ease infinite;
         }
 
-        /* Enhanced Floating particles with multiple sizes */
         .particle {
             position: absolute;
             border-radius: 50%;
@@ -43,7 +40,6 @@
             75% { transform: translateY(-20px) translateX(20px) rotate(270deg); opacity: 0.7; }
         }
         
-        /* Mouse trail particles */
         .mouse-trail {
             position: fixed;
             border-radius: 50%;
@@ -53,7 +49,6 @@
             transition: all 0.3s ease-out;
         }
         
-        /* Enhanced Fade in on scroll with stagger */
         .fade-in {
             opacity: 0;
             transform: translateY(50px) scale(0.95);
@@ -65,7 +60,6 @@
             transform: translateY(0) scale(1);
         }
 
-        /* Staggered animation delay */
         .fade-in:nth-child(1) { transition-delay: 0.1s; }
         .fade-in:nth-child(2) { transition-delay: 0.2s; }
         .fade-in:nth-child(3) { transition-delay: 0.3s; }
@@ -82,7 +76,6 @@
         .fade-in:nth-child(14) { transition-delay: 1.4s; }
         .fade-in:nth-child(15) { transition-delay: 1.5s; }
 
-        /* Pencil stroke animation - enhanced */
         @keyframes drawLine {
             from { width: 0; }
             to { width: 100%; }
@@ -103,7 +96,6 @@
             box-shadow: 0 2px 10px rgba(59,130,246,0.4);
         }
 
-        /* Enhanced Gallery hover effects */
         .gallery-item {
             position: relative;
             overflow: hidden;
@@ -135,7 +127,6 @@
             transform: scale(1.1) rotate(2deg);
         }
         
-        /* Floating navigation elements */
         .nav-float {
             animation: subtleFloat 6s ease-in-out infinite;
         }
@@ -145,7 +136,6 @@
             50% { transform: translateY(-5px); }
         }
         
-        /* Button pulse and glow */
         .btn-glow {
             position: relative;
             overflow: hidden;
@@ -171,7 +161,6 @@
             transform: translateY(-2px) scale(1.05);
         }
 
-        /* Typing effect for hero text */
         .typing-text {
             border-right: 3px solid #3b82f6;
             white-space: nowrap;
@@ -189,7 +178,6 @@
             50% { border-color: #3b82f6; }
         }
 
-        /* Enhanced about section blobs */
         .blob {
             position: absolute;
             border-radius: 50%;
@@ -204,7 +192,6 @@
             66% { transform: translate(-20px, 20px) scale(0.9); }
         }
 
-        /* Image Modal/Lightbox */
         .modal {
             display: none;
             position: fixed;
@@ -282,12 +269,6 @@
         .modal-prev { left: 40px; }
         .modal-next { right: 40px; }
 
-        /* Filter buttons */
-        .filter-btn {
-            transition: all 0.3s ease;
-        }
-
-        /* Back to top button */
         .back-to-top {
             position: fixed;
             bottom: 30px;
@@ -314,29 +295,14 @@
             transform: translateY(-5px) scale(1.1);
             box-shadow: 0 6px 30px rgba(59, 130, 246, 0.6);
         }
-
-        /* Filter buttons */
-        .filter-btn {
-            transition: all 0.3s ease;
-        }
-        
-        .filter-btn.active {
-            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-            color: white;
-            transform: scale(1.05);
-        }
-
-
     </style>
 </head>
 <body class="bg-neutral-50">
-    <!-- Navigation -->
     <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-md shadow-xl z-50">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="text-3xl font-light tracking-widest nav-float">DANIELLA</div>
                 
-                <!-- Desktop Menu -->
                 <div class="hidden md:flex space-x-10">
                     <a href="#home" class="text-gray-700 hover:text-blue-600 transition-all duration-300 nav-float">Home</a>
                     <a href="#gallery" class="text-gray-700 hover:text-blue-600 transition-all duration-300 nav-float">Gallery</a>
@@ -344,7 +310,6 @@
                     <a href="#contact" class="text-gray-700 hover:text-blue-600 transition-all duration-300 nav-float">Contact</a>
                 </div>
 
-                <!-- Mobile Menu Button -->
                 <button id="menuBtn" class="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-all">
                     <svg id="menuIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -355,7 +320,6 @@
                 </button>
             </div>
 
-            <!-- Mobile Menu -->
             <div id="mobileMenu" class="hidden md:hidden pb-4 pt-4 border-t bg-white/80 backdrop-blur-sm">
                 <a href="#home" class="block py-3 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-all mx-2">Home</a>
                 <a href="#gallery" class="block py-3 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-all mx-2">Gallery</a>
@@ -365,9 +329,7 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section id="home" class="pt-16 min-h-screen flex items-center justify-center animated-gradient relative overflow-hidden">
-        <!-- Floating particles -->
         <div class="particle" style="width: 120px; height: 120px; top: 10%; left: 5%; animation: float 7s ease-in-out infinite;"></div>
         <div class="particle" style="width: 80px; height: 80px; top: 20%; left: 85%; animation: float 9s ease-in-out infinite 1s;"></div>
         <div class="particle" style="width: 60px; height: 60px; top: 70%; left: 80%; animation: float 6s ease-in-out infinite 2s;"></div>
@@ -384,179 +346,81 @@
         </div>
     </section>
 
-    <!-- Gallery Section -->
     <section id="gallery" class="py-24 px-4 max-w-7xl mx-auto">
         <h2 class="text-5xl font-light text-center mb-12 fade-in line-animation">Gallery</h2>
         
         <div id="galleryGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Image 1 -->
             <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl">
-                <img 
-                    src="https://i.imgur.com/HHZ7RgU.jpeg" 
-                    alt="Portrait sketch - Side profile with flowing hair"
-                    class="w-full h-full object-cover gallery-image"
-                    data-index="0"
-                >
+                <img src="https://i.imgur.com/HHZ7RgU.jpeg" alt="Portrait sketch" class="w-full h-full object-cover gallery-image" data-index="0">
             </div>
 
-            <!-- Image 2 -->
             <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl">
-                <img 
-                    src="https://i.imgur.com/IuTOB2M.jpeg" 
-                    alt="Character portrait with beard"
-                    class="w-full h-full object-cover gallery-image"
-                    data-index="1"
-                >
+                <img src="https://i.imgur.com/IuTOB2M.jpeg" alt="Character portrait" class="w-full h-full object-cover gallery-image" data-index="1">
             </div>
 
-            <!-- Image 3 -->
             <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl">
-                <img 
-                    src="https://i.imgur.com/eVozpJI.jpeg" 
-                    alt="Pencil artwork 3"
-                    class="w-full h-full object-cover gallery-image"
-                    data-index="2"
-                >
+                <img src="https://i.imgur.com/eVozpJI.jpeg" alt="Pencil artwork" class="w-full h-full object-cover gallery-image" data-index="2">
             </div>
 
-            <!-- Image 4 -->
             <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl">
-                <img 
-                    src="https://i.imgur.com/ZxLTJV5.jpeg" 
-                    alt="Pencil artwork 4"
-                    class="w-full h-full object-cover gallery-image"
-                    data-index="3"
-                >
+                <img src="https://i.imgur.com/ZxLTJV5.jpeg" alt="Pencil artwork" class="w-full h-full object-cover gallery-image" data-index="3">
             </div>
 
-            <!-- Image 5 -->
             <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl">
-                <img 
-                    src="https://i.imgur.com/7BqgUsa.jpeg" 
-                    alt="Pencil artwork 5"
-                    class="w-full h-full object-cover gallery-image"
-                    data-index="4"
-                >
+                <img src="https://i.imgur.com/7BqgUsa.jpeg" alt="Pencil artwork" class="w-full h-full object-cover gallery-image" data-index="4">
             </div>
 
-            <!-- Image 6 -->
             <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl">
-                <img 
-                    src="https://i.imgur.com/3DnjZzm.jpeg" 
-                    alt="Pencil artwork 6"
-                    class="w-full h-full object-cover gallery-image"
-                    data-index="5"
-                >
+                <img src="https://i.imgur.com/3DnjZzm.jpeg" alt="Pencil artwork" class="w-full h-full object-cover gallery-image" data-index="5">
             </div>
 
-            <!-- Image 7 -->
             <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl">
-                <img 
-                    src="https://i.imgur.com/zPyxhCr.jpeg" 
-                    alt="Pencil artwork 7"
-                    class="w-full h-full object-cover gallery-image"
-                    data-index="6"
-                >
+                <img src="https://i.imgur.com/zPyxhCr.jpeg" alt="Pencil artwork" class="w-full h-full object-cover gallery-image" data-index="6">
             </div>
 
-            <!-- Image 8 -->
             <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl">
-                <img 
-                    src="https://i.imgur.com/DLskhe2.jpeg" 
-                    alt="Pencil artwork 8"
-                    class="w-full h-full object-cover gallery-image"
-                    data-index="7"
-                >
+                <img src="https://i.imgur.com/DLskhe2.jpeg" alt="Pencil artwork" class="w-full h-full object-cover gallery-image" data-index="7">
             </div>
 
-            <!-- Image 9 -->
             <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl">
-                <img 
-                    src="https://i.imgur.com/ad9wJ9v.jpeg" 
-                    alt="Pencil artwork 9"
-                    class="w-full h-full object-cover gallery-image"
-                    data-index="8"
-                >
+                <img src="https://i.imgur.com/ad9wJ9v.jpeg" alt="Pencil artwork" class="w-full h-full object-cover gallery-image" data-index="8">
             </div>
 
-            <!-- Image 10 -->
             <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl">
-                <img 
-                    src="https://i.imgur.com/ZHxTRoS.jpeg" 
-                    alt="Pencil artwork 10"
-                    class="w-full h-full object-cover gallery-image"
-                    data-index="9"
-                >
+                <img src="https://i.imgur.com/ZHxTRoS.jpeg" alt="Pencil artwork" class="w-full h-full object-cover gallery-image" data-index="9">
             </div>
 
-            <!-- Image 11 -->
             <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl">
-                <img 
-                    src="https://i.imgur.com/GozSddQ.jpeg" 
-                    alt="Pencil artwork 11"
-                    class="w-full h-full object-cover gallery-image"
-                    data-index="10"
-                >
+                <img src="https://i.imgur.com/GozSddQ.jpeg" alt="Pencil artwork" class="w-full h-full object-cover gallery-image" data-index="10">
             </div>
 
-            <!-- Image 12 -->
             <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl">
-                <img 
-                    src="https://i.imgur.com/rnXoib4.jpeg" 
-                    alt="Pencil artwork 12"
-                    class="w-full h-full object-cover gallery-image"
-                    data-index="11"
-                >
+                <img src="https://i.imgur.com/rnXoib4.jpeg" alt="Pencil artwork" class="w-full h-full object-cover gallery-image" data-index="11">
             </div>
 
-            <!-- Image 13 -->
             <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl">
-                <img 
-                    src="https://i.imgur.com/gSWHRfQ.jpeg" 
-                    alt="Pencil artwork 13"
-                    class="w-full h-full object-cover gallery-image"
-                    data-index="12"
-                >
+                <img src="https://i.imgur.com/gSWHRfQ.jpeg" alt="Pencil artwork" class="w-full h-full object-cover gallery-image" data-index="12">
             </div>
 
-            <!-- Image 14 -->
             <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl">
-                <img 
-                    src="https://i.imgur.com/mhGCbfB.jpeg" 
-                    alt="Pencil artwork 14"
-                    class="w-full h-full object-cover gallery-image"
-                    data-index="13"
-                >
+                <img src="https://i.imgur.com/mhGCbfB.jpeg" alt="Pencil artwork" class="w-full h-full object-cover gallery-image" data-index="13">
             </div>
 
-            <!-- Image 15 -->
             <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl">
-                <img 
-                    src="https://i.imgur.com/tDno72l.jpeg" 
-                    alt="Pencil artwork 15"
-                    class="w-full h-full object-cover gallery-image"
-                    data-index="14"
-                >
+                <img src="https://i.imgur.com/tDno72l.jpeg" alt="Pencil artwork" class="w-full h-full object-cover gallery-image" data-index="14">
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
     <section id="about" class="py-24 px-4 bg-white/50 backdrop-blur-sm relative overflow-hidden">
-        <!-- Animated background blobs -->
         <div class="blob w-96 h-96 bg-gradient-to-r from-blue-200 to-purple-200 top-20 right-20"></div>
         <div class="blob w-80 h-80 bg-gradient-to-r from-indigo-200 to-pink-200 bottom-20 left-20" style="animation-delay: -10s;"></div>
         
         <div class="max-w-6xl mx-auto relative z-10">
             <h2 class="text-5xl font-light text-center mb-20 fade-in line-animation">About</h2>
             <div class="grid md:grid-cols-2 gap-16 items-center">
-                <!-- Artist photo -->
                 <div class="aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden fade-in transform group hover:scale-110 transition-all duration-700 cursor-pointer shadow-2xl">
-                    <img 
-                        src="https://i.imgur.com/vMWQJGa.png" 
-                        alt="Daniella - Artist Photo"
-                        class="w-full h-full object-cover group-hover:scale-110 group-hover:grayscale-0 transition-all duration-700"
-                    >
+                    <img src="https://i.imgur.com/vMWQJGa.png" alt="Daniella - Artist Photo" class="w-full h-full object-cover group-hover:scale-110 group-hover:grayscale-0 transition-all duration-700">
                 </div>
                 
                 <div class="fade-in space-y-6">
@@ -569,9 +433,6 @@
         </div>
     </section>
 
-
-
-    <!-- Contact Section -->
     <section id="contact" class="py-24 px-4 bg-gradient-to-b from-neutral-50 to-gray-100">
         <div class="max-w-4xl mx-auto text-center">
             <h2 class="text-5xl font-light mb-8 fade-in line-animation">Get In Touch</h2>
@@ -592,12 +453,10 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="bg-gradient-to-r from-gray-900 to-black text-white py-12 text-center">
         <p class="text-lg opacity-90">© 2026 Daniella. All rights reserved. Crafted with ❤️ and pencil.</p>
     </footer>
 
-    <!-- Image Modal/Lightbox -->
     <div id="imageModal" class="modal">
         <span class="modal-close">&times;</span>
         <span class="modal-prev modal-nav">&#8249;</span>
@@ -605,7 +464,75 @@
         <span class="modal-next modal-nav">&#8250;</span>
     </div>
 
-    <!-- Back to Top Button -->
     <div class="back-to-top" id="backToTop">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+        </svg>
+    </div>
+
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuIcon = document.getElementById('menuIcon');
+        const closeIcon = document.getElementById('closeIcon');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            menuIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+        });
+
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+            });
+        });
+        
+        const fadeElements = document.querySelectorAll('.fade-in');
+        const appearOnScroll = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        fadeElements.forEach(element => {
+            appearOnScroll.observe(element);
+        });
+
+        const trail = document.createElement('div');
+        trail.className = 'mouse-trail';
+        document.body.appendChild(trail);
+
+        let mouseX = 0, mouseY = 0;
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            trail.style.left = mouseX + 'px';
+            trail.style.top = mouseY + 'px';
+            trail.style.width = Math.random() * 20 + 10 + 'px';
+            trail.style.height = trail.style.width;
+            trail.style.opacity = Math.random() * 0.5 + 0.2;
+        });
+
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('#home');
+            if (parallax) {
+                parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(255,255,255,0.98)';
+                nav.style.backdropFilter = 'blur(20px)';
+                nav.style.boxShadow = '0 10px 40px rgba(0,0,0,0.1)';
+            } else {
+                nav.style.background = 'rgba(255,255,255,0.95)';
+                nav.style.backdropFilter = 'blur(
