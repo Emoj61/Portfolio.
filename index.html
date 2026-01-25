@@ -79,6 +79,8 @@
         .fade-in:nth-child(11) { transition-delay: 1.1s; }
         .fade-in:nth-child(12) { transition-delay: 1.2s; }
         .fade-in:nth-child(13) { transition-delay: 1.3s; }
+        .fade-in:nth-child(14) { transition-delay: 1.4s; }
+        .fade-in:nth-child(15) { transition-delay: 1.5s; }
 
         /* Pencil stroke animation - enhanced */
         @keyframes drawLine {
@@ -516,6 +518,26 @@
                     data-index="12"
                 >
             </div>
+
+            <!-- Image 14 -->
+            <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl">
+                <img 
+                    src="https://i.imgur.com/mhGCbfB.jpeg" 
+                    alt="Pencil artwork 14"
+                    class="w-full h-full object-cover gallery-image"
+                    data-index="13"
+                >
+            </div>
+
+            <!-- Image 15 -->
+            <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl">
+                <img 
+                    src="https://i.imgur.com/tDno72l.jpeg" 
+                    alt="Pencil artwork 15"
+                    class="w-full h-full object-cover gallery-image"
+                    data-index="14"
+                >
+            </div>
         </div>
     </section>
 
@@ -586,158 +608,4 @@
     <!-- Back to Top Button -->
     <div class="back-to-top" id="backToTop">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
-        </svg>
-    </div>
-
-    <!-- Scripts -->
-    <script>
-        // Mobile Menu Toggle
-        const menuBtn = document.getElementById('menuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const menuIcon = document.getElementById('menuIcon');
-        const closeIcon = document.getElementById('closeIcon');
-
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            menuIcon.classList.toggle('hidden');
-            closeIcon.classList.toggle('hidden');
-        });
-
-        const mobileLinks = mobileMenu.querySelectorAll('a');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                menuIcon.classList.remove('hidden');
-                closeIcon.classList.add('hidden');
-            });
-        });
-        
-        // Scroll animations
-        const fadeElements = document.querySelectorAll('.fade-in');
-        const appearOnScroll = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.15 });
-
-        fadeElements.forEach(element => {
-            appearOnScroll.observe(element);
-        });
-
-        // Mouse trail effect
-        const trail = document.createElement('div');
-        trail.className = 'mouse-trail';
-        document.body.appendChild(trail);
-
-        let mouseX = 0, mouseY = 0;
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-            trail.style.left = mouseX + 'px';
-            trail.style.top = mouseY + 'px';
-            trail.style.width = Math.random() * 20 + 10 + 'px';
-            trail.style.height = trail.style.width;
-            trail.style.opacity = Math.random() * 0.5 + 0.2;
-        });
-
-        // Parallax effect
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const parallax = document.querySelector('#home');
-            if (parallax) {
-                parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
-            }
-        });
-
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 100) {
-                nav.style.background = 'rgba(255,255,255,0.98)';
-                nav.style.backdropFilter = 'blur(20px)';
-                nav.style.boxShadow = '0 10px 40px rgba(0,0,0,0.1)';
-            } else {
-                nav.style.background = 'rgba(255,255,255,0.95)';
-                nav.style.backdropFilter = 'blur(10px)';
-                nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.05)';
-            }
-        });
-
-        // Image Modal/Lightbox
-        const modal = document.getElementById('imageModal');
-        const modalImg = document.getElementById('modalImage');
-        const galleryImages = document.querySelectorAll('.gallery-image');
-        const closeModal = document.querySelector('.modal-close');
-        const prevBtn = document.querySelector('.modal-prev');
-        const nextBtn = document.querySelector('.modal-next');
-        let currentImageIndex = 0;
-        const images = Array.from(galleryImages).map(img => img.src);
-
-        galleryImages.forEach((img, index) => {
-            img.addEventListener('click', () => {
-                modal.classList.add('active');
-                modalImg.src = img.src;
-                currentImageIndex = index;
-                document.body.style.overflow = 'hidden';
-            });
-        });
-
-        closeModal.addEventListener('click', () => {
-            modal.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        });
-
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            }
-        });
-
-        prevBtn.addEventListener('click', () => {
-            currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
-            modalImg.src = images[currentImageIndex];
-        });
-
-        nextBtn.addEventListener('click', () => {
-            currentImageIndex = (currentImageIndex + 1) % images.length;
-            modalImg.src = images[currentImageIndex];
-        });
-
-        // Keyboard navigation for modal
-        document.addEventListener('keydown', (e) => {
-            if (modal.classList.contains('active')) {
-                if (e.key === 'Escape') {
-                    modal.classList.remove('active');
-                    document.body.style.overflow = 'auto';
-                } else if (e.key === 'ArrowLeft') {
-                    prevBtn.click();
-                } else if (e.key === 'ArrowRight') {
-                    nextBtn.click();
-                }
-            }
-        });
-
-        // Back to Top Button
-        const backToTop = document.getElementById('backToTop');
-
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
-            }
-        });
-
-        backToTop.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-    </script>
-</body>
-</html>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke
