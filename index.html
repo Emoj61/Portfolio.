@@ -282,14 +282,7 @@
         .modal-prev { left: 40px; }
         .modal-next { right: 40px; }
 
-        /* Skills section */
-        .skill-bar {
-            height: 8px;
-            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
-            border-radius: 10px;
-            transform-origin: left;
-            animation: fillBar 2s ease-out forwards;
-        }
+       
         
         @keyframes fillBar {
             from { transform: scaleX(0); }
@@ -391,17 +384,7 @@
         </div>
     </section>
 
-    <!-- Gallery Section -->
-    <section id="gallery" class="py-24 px-4 max-w-7xl mx-auto">
-        <h2 class="text-5xl font-light text-center mb-12 fade-in line-animation">Gallery</h2>
-        
-        <!-- Filter Buttons -->
-        <div class="flex flex-wrap justify-center gap-4 mb-12 fade-in">
-            <button class="filter-btn active px-6 py-3 rounded-full bg-gray-200 hover:bg-gray-300 transition-all font-medium" data-filter="all">All Work</button>
-            <button class="filter-btn px-6 py-3 rounded-full bg-gray-200 hover:bg-gray-300 transition-all font-medium" data-filter="portraits">Portraits</button>
-            <button class="filter-btn px-6 py-3 rounded-full bg-gray-200 hover:bg-gray-300 transition-all font-medium" data-filter="characters">Characters</button>
-            <button class="filter-btn px-6 py-3 rounded-full bg-gray-200 hover:bg-gray-300 transition-all font-medium" data-filter="sketches">Sketches</button>
-        </div>
+  
         
         <div id="galleryGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Image 1 -->
@@ -568,7 +551,7 @@
                 <!-- Artist photo -->
                 <div class="aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden fade-in transform group hover:scale-110 transition-all duration-700 cursor-pointer shadow-2xl">
                     <img 
-                        src="https://i.imgur.com/qVbwWS6.png" 
+                        src="https://i.imgur.com/2BYQuLU.png" 
                         alt="Daniella - Artist Photo"
                         class="w-full h-full object-cover group-hover:scale-110 group-hover:grayscale-0 transition-all duration-700"
                     >
@@ -584,34 +567,7 @@
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section class="py-24 px-4 bg-gradient-to-b from-white to-gray-50">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-5xl font-light text-center mb-20 fade-in line-animation">Skills & Expertise</h2>
-            <div class="grid md:grid-cols-2 gap-12">
-                <div class="fade-in space-y-8">
-                    <div>
-                        <div class="flex justify-between mb-3">
-                            <span class="text-lg font-medium text-gray-700">Portrait Drawing</span>
-                            <span class="text-lg font-medium text-blue-600">95%</span>
-                        </div>
-                        <div class="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
-                            <div class="skill-bar" style="width: 95%;"></div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="flex justify-between mb-3">
-                            <span class="text-lg font-medium text-gray-700">Character Design</span>
-                            <span class="text-lg font-medium text-blue-600">90%</span>
-                        </div>
-                        <div class="w-full bg-gray-200 rounded-full h-2 overflow
-                            <div class="skill-bar" style="width: 93%;"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    
 
 
 
@@ -837,4 +793,5 @@
     </script>
 </body>
 </html>
+
 
