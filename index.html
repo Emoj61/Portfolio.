@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Daniella - Professional pencil artist specializing in portraits, character design, and sketches">
     <title>Daniella - Artist Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         html {
             scroll-behavior: smooth;
         }
-        /* Fallback styling for broken images */
+        
         img {
             background: linear-gradient(135deg, #e5e7eb 0%, #d1d5db 100%);
         }
         
-        /* Enhanced Animated gradient background */
         @keyframes gradientShift {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
@@ -27,7 +27,6 @@
             animation: gradientShift 20s ease infinite;
         }
 
-        /* Enhanced Floating particles with multiple sizes */
         .particle {
             position: absolute;
             border-radius: 50%;
@@ -43,7 +42,6 @@
             75% { transform: translateY(-20px) translateX(20px) rotate(270deg); opacity: 0.7; }
         }
         
-        /* Mouse trail particles */
         .mouse-trail {
             position: fixed;
             border-radius: 50%;
@@ -53,7 +51,6 @@
             transition: all 0.3s ease-out;
         }
         
-        /* Enhanced Fade in on scroll with stagger */
         .fade-in {
             opacity: 0;
             transform: translateY(50px) scale(0.95);
@@ -65,7 +62,6 @@
             transform: translateY(0) scale(1);
         }
 
-        /* Staggered animation delay */
         .fade-in:nth-child(1) { transition-delay: 0.1s; }
         .fade-in:nth-child(2) { transition-delay: 0.2s; }
         .fade-in:nth-child(3) { transition-delay: 0.3s; }
@@ -82,7 +78,6 @@
         .fade-in:nth-child(14) { transition-delay: 1.4s; }
         .fade-in:nth-child(15) { transition-delay: 1.5s; }
 
-        /* Pencil stroke animation - enhanced */
         @keyframes drawLine {
             from { width: 0; }
             to { width: 100%; }
@@ -103,7 +98,6 @@
             box-shadow: 0 2px 10px rgba(59,130,246,0.4);
         }
 
-        /* Enhanced Gallery hover effects */
         .gallery-item {
             position: relative;
             overflow: hidden;
@@ -135,7 +129,6 @@
             transform: scale(1.1) rotate(2deg);
         }
         
-        /* Floating navigation elements */
         .nav-float {
             animation: subtleFloat 6s ease-in-out infinite;
         }
@@ -145,10 +138,10 @@
             50% { transform: translateY(-5px); }
         }
         
-        /* Button pulse and glow */
         .btn-glow {
             position: relative;
             overflow: hidden;
+            transition: all 0.3s ease;
         }
         
         .btn-glow::before {
@@ -171,7 +164,6 @@
             transform: translateY(-2px) scale(1.05);
         }
 
-        /* Typing effect for hero text */
         .typing-text {
             border-right: 3px solid #3b82f6;
             white-space: nowrap;
@@ -189,7 +181,6 @@
             50% { border-color: #3b82f6; }
         }
 
-        /* Enhanced about section blobs */
         .blob {
             position: absolute;
             border-radius: 50%;
@@ -204,7 +195,6 @@
             66% { transform: translate(-20px, 20px) scale(0.9); }
         }
 
-        /* Image Modal/Lightbox */
         .modal {
             display: none;
             position: fixed;
@@ -282,14 +272,6 @@
         .modal-prev { left: 40px; }
         .modal-next { right: 40px; }
 
-       
-        
-        @keyframes fillBar {
-            from { transform: scaleX(0); }
-            to { transform: scaleX(1); }
-        }
-
-        /* Back to top button */
         .back-to-top {
             position: fixed;
             bottom: 30px;
@@ -316,17 +298,6 @@
             transform: translateY(-5px) scale(1.1);
             box-shadow: 0 6px 30px rgba(59, 130, 246, 0.6);
         }
-
-        /* Filter buttons */
-        .filter-btn {
-            transition: all 0.3s ease;
-        }
-        
-        .filter-btn.active {
-            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-            color: white;
-            transform: scale(1.05);
-        }
     </style>
 </head>
 <body class="bg-neutral-50">
@@ -345,7 +316,7 @@
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <button id="menuBtn" class="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-all">
+                <button id="menuBtn" class="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-all" aria-label="Toggle menu">
                     <svg id="menuIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
@@ -384,16 +355,18 @@
         </div>
     </section>
 
-  
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-24 px-4 max-w-7xl mx-auto">
+        <h2 class="text-5xl font-light text-center mb-12 fade-in line-animation">Gallery</h2>
         
         <div id="galleryGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Image 1 -->
             <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl" data-category="portraits">
                 <img 
                     src="https://i.imgur.com/HHZ7RgU.jpeg" 
-                    alt="Portrait sketch - Side profile with flowing hair"
+                    alt="Realistic portrait sketch of woman in side profile with flowing hair"
                     class="w-full h-full object-cover gallery-image"
-                    data-index="0"
+                    loading="lazy"
                 >
             </div>
 
@@ -401,9 +374,9 @@
             <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl" data-category="characters">
                 <img 
                     src="https://i.imgur.com/IuTOB2M.jpeg" 
-                    alt="Character portrait with beard"
+                    alt="Character portrait of bearded man with intense expression"
                     class="w-full h-full object-cover gallery-image"
-                    data-index="1"
+                    loading="lazy"
                 >
             </div>
 
@@ -411,9 +384,9 @@
             <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl" data-category="sketches">
                 <img 
                     src="https://i.imgur.com/eVozpJI.jpeg" 
-                    alt="Pencil artwork 3"
+                    alt="Detailed pencil sketch with shading techniques"
                     class="w-full h-full object-cover gallery-image"
-                    data-index="2"
+                    loading="lazy"
                 >
             </div>
 
@@ -421,9 +394,9 @@
             <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl" data-category="portraits">
                 <img 
                     src="https://i.imgur.com/ZxLTJV5.jpeg" 
-                    alt="Pencil artwork 4"
+                    alt="Expressive portrait showing emotional depth"
                     class="w-full h-full object-cover gallery-image"
-                    data-index="3"
+                    loading="lazy"
                 >
             </div>
 
@@ -431,9 +404,9 @@
             <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl" data-category="characters">
                 <img 
                     src="https://i.imgur.com/7BqgUsa.jpeg" 
-                    alt="Pencil artwork 5"
+                    alt="Fantasy character design with detailed features"
                     class="w-full h-full object-cover gallery-image"
-                    data-index="4"
+                    loading="lazy"
                 >
             </div>
 
@@ -441,9 +414,9 @@
             <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl" data-category="sketches">
                 <img 
                     src="https://i.imgur.com/3DnjZzm.jpeg" 
-                    alt="Pencil artwork 6"
+                    alt="Quick study sketch capturing gesture and form"
                     class="w-full h-full object-cover gallery-image"
-                    data-index="5"
+                    loading="lazy"
                 >
             </div>
 
@@ -451,9 +424,9 @@
             <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl" data-category="portraits">
                 <img 
                     src="https://i.imgur.com/zPyxhCr.jpeg" 
-                    alt="Pencil artwork 7"
+                    alt="Lifelike portrait with intricate facial details"
                     class="w-full h-full object-cover gallery-image"
-                    data-index="6"
+                    loading="lazy"
                 >
             </div>
 
@@ -461,9 +434,9 @@
             <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl" data-category="characters">
                 <img 
                     src="https://i.imgur.com/DLskhe2.jpeg" 
-                    alt="Pencil artwork 8"
+                    alt="Original character concept with unique styling"
                     class="w-full h-full object-cover gallery-image"
-                    data-index="7"
+                    loading="lazy"
                 >
             </div>
 
@@ -471,9 +444,9 @@
             <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl" data-category="sketches">
                 <img 
                     src="https://i.imgur.com/ad9wJ9v.jpeg" 
-                    alt="Pencil artwork 9"
+                    alt="Experimental sketch exploring light and shadow"
                     class="w-full h-full object-cover gallery-image"
-                    data-index="8"
+                    loading="lazy"
                 >
             </div>
 
@@ -481,9 +454,9 @@
             <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl" data-category="portraits">
                 <img 
                     src="https://i.imgur.com/ZHxTRoS.jpeg" 
-                    alt="Pencil artwork 10"
+                    alt="Thoughtful portrait capturing contemplative mood"
                     class="w-full h-full object-cover gallery-image"
-                    data-index="9"
+                    loading="lazy"
                 >
             </div>
 
@@ -491,9 +464,9 @@
             <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl" data-category="characters">
                 <img 
                     src="https://i.imgur.com/GozSddQ.jpeg" 
-                    alt="Pencil artwork 11"
+                    alt="Dynamic character pose with strong personality"
                     class="w-full h-full object-cover gallery-image"
-                    data-index="10"
+                    loading="lazy"
                 >
             </div>
 
@@ -501,9 +474,9 @@
             <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl" data-category="sketches">
                 <img 
                     src="https://i.imgur.com/rnXoib4.jpeg" 
-                    alt="Pencil artwork 12"
+                    alt="Loose sketch demonstrating artistic technique"
                     class="w-full h-full object-cover gallery-image"
-                    data-index="11"
+                    loading="lazy"
                 >
             </div>
 
@@ -511,9 +484,9 @@
             <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl" data-category="portraits">
                 <img 
                     src="https://i.imgur.com/gSWHRfQ.jpeg" 
-                    alt="Pencil artwork 13"
+                    alt="Refined portrait demonstrating mastery of technique"
                     class="w-full h-full object-cover gallery-image"
-                    data-index="12"
+                    loading="lazy"
                 >
             </div>
 
@@ -521,9 +494,9 @@
             <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl" data-category="characters">
                 <img 
                     src="https://i.imgur.com/TEld9q7.jpeg" 
-                    alt="Pencil artwork 14"
+                    alt="Compelling character study with dramatic lighting"
                     class="w-full h-full object-cover gallery-image"
-                    data-index="13"
+                    loading="lazy"
                 >
             </div>
 
@@ -531,9 +504,9 @@
             <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl" data-category="sketches">
                 <img 
                     src="https://i.imgur.com/mK6p1lp.jpeg" 
-                    alt="Pencil artwork 15"
+                    alt="Atmospheric sketch with artistic flair"
                     class="w-full h-full object-cover gallery-image"
-                    data-index="14"
+                    loading="lazy"
                 >
             </div>
         </div>
@@ -549,11 +522,12 @@
             <h2 class="text-5xl font-light text-center mb-20 fade-in line-animation">About</h2>
             <div class="grid md:grid-cols-2 gap-16 items-center">
                 <!-- Artist photo -->
-                <div class="aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden fade-in transform group hover:scale-110 transition-all duration-700 cursor-pointer shadow-2xl">
+                <div class="aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden fade-in transform group hover:scale-105 transition-all duration-700 cursor-pointer shadow-2xl">
                     <img 
                         src="https://i.imgur.com/2BYQuLU.png" 
-                        alt="Daniella - Artist Photo"
-                        class="w-full h-full object-cover group-hover:scale-110 group-hover:grayscale-0 transition-all duration-700"
+                        alt="Daniella holding a pencil portrait"
+                        class="w-full h-full object-cover group-hover:scale-110 transition-all duration-700"
+                        loading="lazy"
                     >
                 </div>
                 
@@ -566,10 +540,6 @@
             </div>
         </div>
     </section>
-
-    
-
-
 
     <!-- Contact Section -->
     <section id="contact" class="py-24 px-4 bg-gradient-to-b from-neutral-50 to-gray-100">
@@ -601,7 +571,7 @@
     <div id="imageModal" class="modal">
         <span class="modal-close">&times;</span>
         <span class="modal-prev modal-nav">&#8249;</span>
-        <img class="modal-content" id="modalImage">
+        <img class="modal-content" id="modalImage" alt="Gallery image enlarged">
         <span class="modal-next modal-nav">&#8250;</span>
     </div>
 
@@ -612,7 +582,7 @@
         </svg>
     </div>
 
-    <!-- Scripts -->
+    <!-- JavaScript -->
     <script>
         // Mobile Menu Toggle
         const menuBtn = document.getElementById('menuBtn');
@@ -620,7 +590,7 @@
         const menuIcon = document.getElementById('menuIcon');
         const closeIcon = document.getElementById('closeIcon');
 
-        menuBtn.addEventListener('click', () => {
+       menuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
             menuIcon.classList.toggle('hidden');
             closeIcon.classList.toggle('hidden');
