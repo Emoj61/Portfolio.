@@ -280,9 +280,24 @@
         .modal-prev { left: 40px; }
         .modal-next { right: 40px; }
 
-        /* Filter buttons */
-        .filter-btn {
-            transition: all 0.3s ease;
+        /* Skills section */
+        .skill-bar {
+            height: 8px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            border-radius: 10px;
+            transform-origin: left;
+            animation: fillBar 2s ease-out forwards;
+        }
+        
+        @keyframes fillBar {
+            from { transform: scaleX(0); }
+            to { transform: scaleX(1); }
+        }
+
+        /* Testimonials carousel */
+        .testimonial-card {
+            min-width: 100%;
+            transition: transform 0.5s ease;
         }
 
         /* Back to top button */
@@ -386,9 +401,17 @@
     <section id="gallery" class="py-24 px-4 max-w-7xl mx-auto">
         <h2 class="text-5xl font-light text-center mb-12 fade-in line-animation">Gallery</h2>
         
+        <!-- Filter Buttons -->
+        <div class="flex flex-wrap justify-center gap-4 mb-12 fade-in">
+            <button class="filter-btn active px-6 py-3 rounded-full bg-gray-200 hover:bg-gray-300 transition-all font-medium" data-filter="all">All Work</button>
+            <button class="filter-btn px-6 py-3 rounded-full bg-gray-200 hover:bg-gray-300 transition-all font-medium" data-filter="portraits">Portraits</button>
+            <button class="filter-btn px-6 py-3 rounded-full bg-gray-200 hover:bg-gray-300 transition-all font-medium" data-filter="characters">Characters</button>
+            <button class="filter-btn px-6 py-3 rounded-full bg-gray-200 hover:bg-gray-300 transition-all font-medium" data-filter="sketches">Sketches</button>
+        </div>
+        
         <div id="galleryGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Image 1 -->
-            <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl">
+            <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl" data-category="portraits">
                 <img 
                     src="https://i.imgur.com/HHZ7RgU.jpeg" 
                     alt="Portrait sketch - Side profile with flowing hair"
@@ -398,7 +421,7 @@
             </div>
 
             <!-- Image 2 -->
-            <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl">
+            <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl" data-category="characters">
                 <img 
                     src="https://i.imgur.com/IuTOB2M.jpeg" 
                     alt="Character portrait with beard"
@@ -408,7 +431,7 @@
             </div>
 
             <!-- Image 3 -->
-            <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl">
+            <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl" data-category="sketches">
                 <img 
                     src="https://i.imgur.com/eVozpJI.jpeg" 
                     alt="Pencil artwork 3"
@@ -418,7 +441,7 @@
             </div>
 
             <!-- Image 4 -->
-            <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl">
+            <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl" data-category="portraits">
                 <img 
                     src="https://i.imgur.com/ZxLTJV5.jpeg" 
                     alt="Pencil artwork 4"
@@ -428,7 +451,7 @@
             </div>
 
             <!-- Image 5 -->
-            <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl">
+            <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl" data-category="characters">
                 <img 
                     src="https://i.imgur.com/7BqgUsa.jpeg" 
                     alt="Pencil artwork 5"
@@ -438,7 +461,7 @@
             </div>
 
             <!-- Image 6 -->
-            <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl">
+            <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl" data-category="sketches">
                 <img 
                     src="https://i.imgur.com/3DnjZzm.jpeg" 
                     alt="Pencil artwork 6"
@@ -448,7 +471,7 @@
             </div>
 
             <!-- Image 7 -->
-            <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl">
+            <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl" data-category="portraits">
                 <img 
                     src="https://i.imgur.com/zPyxhCr.jpeg" 
                     alt="Pencil artwork 7"
@@ -458,7 +481,7 @@
             </div>
 
             <!-- Image 8 -->
-            <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl">
+            <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl" data-category="characters">
                 <img 
                     src="https://i.imgur.com/DLskhe2.jpeg" 
                     alt="Pencil artwork 8"
@@ -468,7 +491,7 @@
             </div>
 
             <!-- Image 9 -->
-            <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl">
+            <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl" data-category="sketches">
                 <img 
                     src="https://i.imgur.com/ad9wJ9v.jpeg" 
                     alt="Pencil artwork 9"
@@ -478,7 +501,7 @@
             </div>
 
             <!-- Image 10 -->
-            <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl">
+            <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl" data-category="portraits">
                 <img 
                     src="https://i.imgur.com/ZHxTRoS.jpeg" 
                     alt="Pencil artwork 10"
@@ -488,7 +511,7 @@
             </div>
 
             <!-- Image 11 -->
-            <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl">
+            <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl" data-category="characters">
                 <img 
                     src="https://i.imgur.com/GozSddQ.jpeg" 
                     alt="Pencil artwork 11"
@@ -498,7 +521,7 @@
             </div>
 
             <!-- Image 12 -->
-            <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl">
+            <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl" data-category="sketches">
                 <img 
                     src="https://i.imgur.com/rnXoib4.jpeg" 
                     alt="Pencil artwork 12"
@@ -508,7 +531,7 @@
             </div>
 
             <!-- Image 13 -->
-            <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl">
+            <div class="gallery-item aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden group cursor-pointer fade-in shadow-2xl" data-category="portraits">
                 <img 
                     src="https://i.imgur.com/gSWHRfQ.jpeg" 
                     alt="Pencil artwork 13"
@@ -531,7 +554,7 @@
                 <!-- Artist photo -->
                 <div class="aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden fade-in transform group hover:scale-110 transition-all duration-700 cursor-pointer shadow-2xl">
                     <img 
-                        src="https://i.imgur.com/vMWQJGa.png" 
+                        src="https://i.imgur.com/qVbwWS6.png" 
                         alt="Daniella - Artist Photo"
                         class="w-full h-full object-cover group-hover:scale-110 group-hover:grayscale-0 transition-all duration-700"
                     >
@@ -542,6 +565,73 @@
                     <p class="text-gray-700 leading-relaxed text-lg">I bring characters and personalities to life through the timeless medium of pencil. My work explores the depth of human expression through portraits and character design, capturing the subtle nuances that make each subject unique.</p>
                     <p class="text-gray-700 leading-relaxed text-lg">Working primarily in pencil allows me to focus on the fundamentals: light, shadow, form, and emotion. I believe that even in black and white, art can convey the full spectrum of human experience.</p>
                     <p class="text-gray-700 leading-relaxed text-lg">Through my art, I strive to connect with viewers on an emotional level, inviting them to see the world through the eyes of the subjects I create.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="py-24 px-4 bg-gradient-to-b from-white to-gray-50">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-5xl font-light text-center mb-20 fade-in line-animation">Skills & Expertise</h2>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="fade-in space-y-8">
+                    <div>
+                        <div class="flex justify-between mb-3">
+                            <span class="text-lg font-medium text-gray-700">Portrait Drawing</span>
+                            <span class="text-lg font-medium text-blue-600">95%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
+                            <div class="skill-bar" style="width: 95%;"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-3">
+                            <span class="text-lg font-medium text-gray-700">Character Design</span>
+                            <span class="text-lg font-medium text-blue-600">90%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
+                            <div class="skill-bar" style="width: 90%;"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-3">
+                            <span class="text-lg font-medium text-gray-700">Shading Techniques</span>
+                            <span class="text-lg font-medium text-blue-600">92%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
+                            <div class="skill-bar" style="width: 92%;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="fade-in space-y-8">
+                    <div>
+                        <div class="flex justify-between mb-3">
+                            <span class="text-lg font-medium text-gray-700">Realistic Anatomy</span>
+                            <span class="text-lg font-medium text-blue-600">88%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
+                            <div class="skill-bar" style="width: 88%;"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-3">
+                            <span class="text-lg font-medium text-gray-700">Composition</span>
+                            <span class="text-lg font-medium text-blue-600">85%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
+                            <div class="skill-bar" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-3">
+                            <span class="text-lg font-medium text-gray-700">Creative Concepts</span>
+                            <span class="text-lg font-medium text-blue-600">93%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
+                            <div class="skill-bar" style="width: 93%;"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -719,6 +809,36 @@
                     nextBtn.click();
                 }
             }
+        });
+
+        // Gallery Filter
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.getAttribute('data-filter');
+
+                galleryItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'scale(1)';
+                        }, 10);
+                    } else {
+                        item.style.opacity = '0';
+                        item.style.transform = 'scale(0.8)';
+                        setTimeout(() => {
+                            item.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
         });
 
         // Back to Top Button
